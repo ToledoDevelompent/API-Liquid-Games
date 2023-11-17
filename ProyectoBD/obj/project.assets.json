@@ -842,16 +842,6 @@
         "runtime": {
           "lib/net6.0/ZstdSharp.dll": {}
         }
-      },
-      "ProjectDB.Data/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "compile": {
-          "bin/placeholder/ProjectDB.Data.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/ProjectDB.Data.dll": {}
-        }
       }
     }
   },
@@ -2495,11 +2485,6 @@
         "zstdsharp.port.0.7.1.nupkg.sha512",
         "zstdsharp.port.nuspec"
       ]
-    },
-    "ProjectDB.Data/1.0.0": {
-      "type": "project",
-      "path": "../ProjectDB.Data/ProjectDB.Data.csproj",
-      "msbuildProject": "../ProjectDB.Data/ProjectDB.Data.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -2507,7 +2492,6 @@
       "Dapper >= 2.1.15",
       "Microsoft.AspNetCore.Cors >= 2.2.0",
       "MySql.Data >= 8.2.0",
-      "ProjectDB.Data >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.2.3"
     ]
   },
@@ -2547,11 +2531,7 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {
-            "C:\\Users\\ObedT\\Desktop\\ERPS\\API-Liquid-Games\\ProjectDB.Data\\ProjectDB.Data.csproj": {
-              "projectPath": "C:\\Users\\ObedT\\Desktop\\ERPS\\API-Liquid-Games\\ProjectDB.Data\\ProjectDB.Data.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {

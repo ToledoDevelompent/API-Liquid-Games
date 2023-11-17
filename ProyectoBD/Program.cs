@@ -1,4 +1,3 @@
-using ProjectDB.Data;
 using MySql.Data.MySqlClient;
 
 var builder = WebApplication.CreateBuilder(args);
