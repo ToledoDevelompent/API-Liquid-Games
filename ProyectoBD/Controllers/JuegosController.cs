@@ -42,5 +42,43 @@ namespace ProyectoBD.Controllers
 
             return Ok(generos);
         }
+        [HttpPost("[action]")]
+        public async Task<IActionResult> postJuegosCategoria([FromBody] Juegos.postJuegosCategoria model)
+        {
+            
+            IEnumerable<Juegos.Juego> juegos = await db.QueryAsync<Juegos.Juego>("Call JuegosObtenerJuesgosPorGenero(@id);", model);
+
+            return Ok(juegos);
+        }
+        [HttpPost("[action]")]
+        public async Task<IActionResult> postJuegoPorID([FromBody] Juegos.postJuegoPorID model)
+        {
+            
+            IEnumerable<Juegos.Juego> juego = await db.QueryAsync<Juegos.Juego>("Call JuegosObtenerJuesgosPorGenero(@id);", model);          
+
+            if(juego == null)
+            {
+                return BadRequest("No se pudo encontrar el juego");
+            }
+            else
+            {
+                return Ok(juego);
+            }
+        }
+        [HttpPost("[action]")]
+        public async Task<IActionResult> postUsuarioTieneJuego([FromBody] Juegos.postUsuarioTieneJuego model)
+        {
+            
+            IEnumerable<Juegos.Juego> juego = await db.QueryAsync<Juegos.Juego>("Call BibliotecaVerificarJuegoEspecifico(@idUsuario, @idJuego);", model);          
+
+            if(juego == null)
+            {
+                return Ok(false);
+            }
+            else
+            {
+                return Ok(true);
+            }
+        }
     }
 }

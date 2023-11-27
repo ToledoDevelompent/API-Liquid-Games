@@ -28,5 +28,18 @@ namespace ProyectoBD.Models
         {
             public string slug { get; set; }
         }
+        public class postJuegosCategoria
+        {
+            public int id { get; set; }
+        }
+        public class postJuegoPorID
+        {
+            public int id { get; set; }
+        }
+        public class postUsuarioTieneJuego
+        {
+            public int idUsuario { get; set; }
+            public int idJuego { get; set; }
+        }
     }
 }
