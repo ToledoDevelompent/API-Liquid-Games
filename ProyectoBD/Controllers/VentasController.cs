@@ -22,7 +22,7 @@ namespace ProyectoBD.Controllers
         public async Task<IActionResult> postVentaJuego([FromBody] Ventas.postVentaJuego model)
         {
 
-            IEnumerable<Juegos.Juego> juego = await db.QueryAsync<Juegos.Juego>("Call BibliotecaVerificarJuegoEspecifico(@idUsuario, @idJuego);", model);
+            IEnumerable<Juegos.Juego> juego = await db.QueryAsync<Juegos.Juego>("Call VentasInsertarVentaJuego(@idUsuario, @idJuego);", model);
 
             if (juego == null)
             {
