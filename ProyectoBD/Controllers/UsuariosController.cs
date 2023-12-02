@@ -20,7 +20,7 @@ namespace ProyectoBD.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> PostUsuario([FromBody] Usuarios.PostUsuario model)
+        public async Task<IActionResult> postUsuario([FromBody] Usuarios.postUsuario model)
         {
             var user = await db.QueryFirstOrDefaultAsync("Call UsuariosInsertarUsuario (@usuario, @contrasenia, @fechaNacimiento, @correo);", model);
 
@@ -35,25 +35,37 @@ namespace ProyectoBD.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> VerificarUsuario([FromBody] Usuarios.VerificarUsuario model)
+        public async Task<IActionResult> postVerificarUsuario([FromBody] Usuarios.postVerificarUsuario model)
         {
             var user = await db.QueryAsync("Call UsuariosVerificarUsuario (@username);", model);
-
-            return Ok(user);
+            if (user.Count() > 0)
+            {
+                return Ok(false);
+            }
+            else
+            {
+                return Ok(true);
+            }
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> VerificarCorreo([FromBody] Usuarios.VerificarUsuario model)
+        public async Task<IActionResult> postVerificarCorreo([FromBody] Usuarios.postVerificarCorreo model)
         {
             var user = await db.QueryAsync("Call UsuariosVerificarCorreo (@correo);", model);
-
-            return Ok(user);
+            if (user.Count() > 0)
+            {
+                return Ok(false);
+            }
+            else
+            {
+                return Ok(true);
+            }
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> GetUsuarioEspecifico([FromBody] Usuarios.GetUsuarioEspecifico model)
+        public async Task<IActionResult> getUsuarioEspecifico([FromBody] Usuarios.getUsuarioEspecifico model)
         {
-            var user = await db.QueryFirstOrDefaultAsync("Call UsuariosObtenerUsuario (@idUsuario);", model);
+            var user = await db.QueryFirstOrDefaultAsync("Call UsuariosObtenerUsuario (@id);", model);
             return Ok(user);
         }
 

@@ -4,6 +4,7 @@ using System.Data;
 using MySql.Data.MySqlClient;
 using Dapper;
 using ProyectoBD.Models;
+using static ProyectoBD.Models.Usuarios;
 
 namespace ProyectoBD.Controllers
 {
@@ -19,9 +20,9 @@ namespace ProyectoBD.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> TryLogin([FromBody] Login.TryLogin model)
+        public async Task<IActionResult> postTryLogin([FromBody] Login.postTryLogin model)
         {
-            var User = await db.QueryFirstOrDefaultAsync<dynamic>("Call LoginIntentarLogin (@username, @password);", model);
+            Usuario? User = await db.QueryFirstOrDefaultAsync<Usuarios.Usuario>("Call LoginIntentarLogin (@username, @password);", model);
 
             if (User != null)
             {
