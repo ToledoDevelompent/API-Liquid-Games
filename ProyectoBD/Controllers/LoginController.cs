@@ -26,7 +26,7 @@ namespace ProyectoBD.Controllers
 
             if (User != null)
             {
-                return Ok(new {User.idUsuario});
+                return Ok(new {id = User.idUsuario});
             }
             else
             {

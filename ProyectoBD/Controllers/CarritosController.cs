@@ -42,5 +42,12 @@ namespace ProyectoBD.Controllers
             await db.QueryFirstOrDefaultAsync("Call CarritosEliminarJuego(@idUsuario, @idJuego);", model);
             return Ok();
         }
+        [HttpPost("[action]")]
+        public async Task<IActionResult> postVentaCarrito([FromBody] Carritos.postVentaCarrito model)
+        {
+
+            await db.QueryFirstOrDefaultAsync("Call CarritoRealizarVenta(@id);", model);
+            return Ok();
+        }
     }
 }

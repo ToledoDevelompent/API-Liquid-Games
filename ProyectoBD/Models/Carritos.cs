@@ -16,5 +16,9 @@
             public int idUsuario{ get; set; }
             public int idJuego{ get; set; }
         }
+        public class postVentaCarrito
+        {
+            public int id{ get; set; }
+        }
     }
 }

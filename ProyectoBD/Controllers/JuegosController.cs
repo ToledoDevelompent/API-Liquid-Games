@@ -22,7 +22,7 @@ namespace ProyectoBD.Controllers
         public async Task<IActionResult> getJuegosDestacados()
         {
             
-            IEnumerable<Juegos.Juego> juegosDestacados = await db.QueryAsync<Juegos.Juego>("Call JuegosObtenerJuegosDestacados;");
+            IEnumerable<Juegos.Juego> juegosDestacados = await db.QueryAsync<Juegos.Juego>("Call JuegosObtenerJuegosDestacados();");
 
             return Ok(juegosDestacados);
         }
@@ -30,7 +30,7 @@ namespace ProyectoBD.Controllers
         public async Task<IActionResult> getGeneros()
         {
             
-            IEnumerable<Juegos.Genero> generos = await db.QueryAsync<Juegos.Genero>("Call GenerosObtenerGeneros;");
+            IEnumerable<dynamic> generos = await db.QueryAsync<dynamic>("Call GenerosObtenerGeneros();");
 
             return Ok(generos);
         }
