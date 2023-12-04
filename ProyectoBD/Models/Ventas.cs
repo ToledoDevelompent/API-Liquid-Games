@@ -5,7 +5,7 @@
         public class postVentaJuego
         {
             public int idUsuario { get; set;}
-            public JuegoForVenta[] juegos { get; set;}
+            public int idJuego { get; set;}
         }
 
         public class JuegoForVenta 

@@ -1,8 +1,8 @@
+using Microsoft.Extensions.FileProviders;
 using MySql.Data.MySqlClient;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 builder.Services.AddCors(options =>
@@ -13,7 +13,6 @@ builder.Services.AddCors(options =>
             builder.WithOrigins("*"); builder.AllowAnyHeader(); builder.AllowAnyMethod();
         });
 });
-
 
 builder.Services.AddControllers();
 
@@ -35,9 +34,11 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
-
 app.UseCors("MyCorsImplementationPolicy");
+
+app.UseAuthentication();
+
+app.UseAuthorization();
 
 app.MapControllers();
 

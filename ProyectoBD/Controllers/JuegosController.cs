@@ -22,7 +22,7 @@ namespace ProyectoBD.Controllers
         public async Task<IActionResult> getJuegosDestacados()
         {
             
-            IEnumerable<Juegos.Juego> juegosDestacados = await db.QueryAsync<Juegos.Juego>("Call JuegosObtenerJuegosDestacados();");
+            var juegosDestacados = await db.QueryAsync("Call JuegosObtenerJuegosDestacados();");
 
             return Ok(juegosDestacados);
         }
@@ -30,7 +30,7 @@ namespace ProyectoBD.Controllers
         public async Task<IActionResult> getGeneros()
         {
             
-            IEnumerable<dynamic> generos = await db.QueryAsync<dynamic>("Call GenerosObtenerGeneros();");
+            var generos = await db.QueryAsync("Call GenerosObtenerGeneros();");
 
             return Ok(generos);
         }
@@ -54,7 +54,7 @@ namespace ProyectoBD.Controllers
         public async Task<IActionResult> postJuegoPorID([FromBody] Juegos.postJuegoPorID model)
         {
             
-            IEnumerable<Juegos.Juego> juego = await db.QueryAsync<Juegos.Juego>("Call JuegosObtenerJuesgosPorGenero(@id);", model);          
+            Juegos.Juego juego = await db.QueryFirstOrDefaultAsync<Juegos.Juego>("Call JuegosObtenerJuegoPorID(@id);", model);          
 
             if(juego == null)
             {
@@ -69,9 +69,9 @@ namespace ProyectoBD.Controllers
         public async Task<IActionResult> postUsuarioTieneJuego([FromBody] Juegos.postUsuarioTieneJuego model)
         {
             
-            IEnumerable<Juegos.Juego> juego = await db.QueryAsync<Juegos.Juego>("Call BibliotecaVerificarJuegoEspecifico(@idUsuario, @idJuego);", model);          
+            IEnumerable<Juegos.Juego> juego = await db.QueryAsync<Juegos.Juego>("Call BibliotecaVerificarJuegoEspecifico(@idUsuario, @idJuego);", model);
 
-            if(juego == null)
+            if (juego.Count() == 0)
             {
                 return Ok(false);
             }

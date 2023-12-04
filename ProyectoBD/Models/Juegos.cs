@@ -14,14 +14,14 @@ namespace ProyectoBD.Models
             public string esbr { get; set; }
             public float calificacion { get; set; }
             public string? imagen_portada { get; set; }
-            public string imagen_fondo { get; set; }
-            public string fecha_lanzamiento { get; set; }
+            public string? imagen_fondo { get; set; }
+            public string? fecha_lanzamiento { get; set; }
         }
         public class Genero
         {
-            public int id { get; set; }
-            public string nombre { get; set; }
-            public string imagen { get; set; }
+            public int? id { get; set; }
+            public string? nombre { get; set; }
+            public string? imagen { get; set; }
         }
 
         public class postBuscarJuegos

@@ -23,16 +23,15 @@ namespace ProyectoBD.Controllers
         {
 
             await db.QueryFirstOrDefaultAsync("Call CarritosInsertarJuego(@idUsuario, @idJuego);", model);
-            return Ok(true);
+            return Ok();
 
         }
-        
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> postVerJuegosEnCarrito([FromBody] Carritos.postCarritoJuego model)
+        public async Task<IActionResult> postVerJuegosEnCarrito([FromBody] Carritos.postVerJuegosEnCarrito model)
         {
 
-            IEnumerable < Juegos.Juego > juegos = await db.QueryAsync<Juegos.Juego>("Call CarritosObtenerJuegos(@id);", model);
+            IEnumerable<Juegos.Juego>juegos = await db.QueryAsync<Juegos.Juego>("Call CarritosObtenerJuegosEnCarrito(@id);", model);
             return Ok(juegos);
         }
         [HttpPost("[action]")]
@@ -46,7 +45,7 @@ namespace ProyectoBD.Controllers
         public async Task<IActionResult> postVentaCarrito([FromBody] Carritos.postVentaCarrito model)
         {
 
-            await db.QueryFirstOrDefaultAsync("Call CarritoRealizarVenta(@id);", model);
+            await db.QueryAsync("Call CarritosRealizarVenta(@id);", model);
             return Ok();
         }
     }
